@@ -9,4 +9,5 @@ jobs:
   build:
     uses: ./.github/workflows/dotnet-build-test.yml
     with:
+      solution-path: 'ECU_Replica/ECU_Replica.sln'
       dotnet-version: 'v4.8'

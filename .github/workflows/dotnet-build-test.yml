@@ -2,7 +2,7 @@ name: .NET Build
 on:
   workflow_call:
     inputs:
-      solutionPath:
+      solution-path:
         required: false
         type: string
         description: 'Path to, and including, the solution file'
@@ -22,9 +22,9 @@ jobs:
         with:
           dotnet-version: '${{ inputs.dotnet-version }}'
       - name: Install dependencies
-        run: dotnet restore ${{ inputs.solutionPath }}
+        run: dotnet restore ${{ inputs.solution-path }}
       - name: Build
-        run: dotnet build ${{ inputs.solutionPath }} --configuration Release --no-restore
+        run: dotnet build ${{ inputs.solution-path }} --configuration Release --no-restore
       - name: Test
-        run: dotnet test ${{ inputs.solutionPath }} --no-build --verbosity normal
+        run: dotnet test ${{ inputs.solution-path }} --no-build --verbosity normal
         
