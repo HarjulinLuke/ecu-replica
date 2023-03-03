@@ -1,0 +1,29 @@
+name: .NET Build
+on:
+  workflow_call:
+    inputs:
+      solutionPath:
+        required: false
+        type: string
+        description: 'Path to, and including, the solution file'
+      dotnet-version:
+        required: true
+        type: string
+        description: 'Version of .NET to work with.'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core SDK ${{ inputs.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore ${{ inputs.solutionPath }}
+      - name: Build
+        run: dotnet build ${{ inputs.solutionPath }} --configuration Release --no-restore
+      - name: Test
+        run: dotnet test ${{ inputs.solutionPath }} --no-build --verbosity normal
