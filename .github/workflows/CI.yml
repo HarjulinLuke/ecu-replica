@@ -1,0 +1,8 @@
+name: CI Pipeline for .NET application
+
+
+jobs:
+  ci:
+    uses: ./.github/workflows/dotnet-build-test.yml
+      with:
+        dotnet-version: '4.8'
