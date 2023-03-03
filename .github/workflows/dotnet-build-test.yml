@@ -20,7 +20,7 @@ jobs:
       - name: Setup .NET SDK ${{ inputs.dotnet-version }}
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '4.8'
+          dotnet-version: '${{ inputs.dotnet-version }}'
       - name: Install dependencies
         run: dotnet restore ${{ inputs.solutionPath }}
       - name: Build
