@@ -7,7 +7,7 @@ on:
         type: string
         description: 'Path to, and including, the solution file'
       dotnet-version:
-        required: false
+        required: true
         type: string
         description: 'Version of .NET to work with.'
 
